@@ -4,9 +4,25 @@ namespace gregslist_dotnet.Controllers;
 [Route("api/cars")] // TODO show off fancy thing
 public class CarsController : ControllerBase
 {
-  [HttpGet]
-  public string Test()
+  public CarsController(CarsService carsService)
   {
-    return "Cars Controller works!!!!!";
+    _carsService = carsService;
+  }
+
+  private readonly CarsService _carsService;
+
+
+  [HttpGet]
+  public ActionResult<List<Car>> GetAllCars()
+  {
+    try
+    {
+      List<Car> cars = _carsService.GetAllCars();
+      return Ok(cars);
+    }
+    catch (Exception error)
+    {
+      return BadRequest(error.Message);
+    }
   }
 }
