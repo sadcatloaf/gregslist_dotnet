@@ -5,13 +5,13 @@ namespace gregslist_dotnet.Controllers;
 
 public class HousesController : ControllerBase
 {
-    public HousesController(HousesService housesService)
-    {
-        _housesService = housesService;
-    }
-    private readonly HousesService _housesService
+    // public HousesController(HousesService housesService)
+    // {
+    //     _housesService = housesService;
+    // }
+    // private readonly HousesService _housesService
 
-        [HttpGet "Test"]
+    [HttpGet("Test")]
     public string Test()
     {
         return "Houses controller works!";
