@@ -1,6 +1,7 @@
 
 
 
+
 namespace gregslist_dotnet.Repositories;
 
 public class CarsRepository
@@ -70,5 +71,15 @@ public class CarsRepository
     }, carData).SingleOrDefault();
 
     return car;
+  }
+
+  internal void DeleteCar(int carId)
+  {
+    string sql = "DELETE FROM cars WHERE id = @id LIMIT 1;";
+    //                                      { id: 3 }
+    int rowsAffected = _db.Execute(sql, new { id = carId });
+
+    if (rowsAffected == 0) throw new Exception("DELETE WAS UNSUCCESSFUL");
+    if (rowsAffected > 1) throw new Exception("DELETE WAS TOO SUCCESSFUL");
   }
 }

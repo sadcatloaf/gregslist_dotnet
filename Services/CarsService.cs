@@ -34,4 +34,15 @@ public class CarsService
 
     return car;
   }
+
+  internal string DeleteCar(int carId, string userId)
+  {
+    Car car = GetCarById(carId);
+
+    if (car.CreatorId != userId) throw new Exception("THIS IS NOT YOUR CAR, BUD");
+
+    _repository.DeleteCar(carId);
+
+    return $"Deleted the {car.Make} {car.Model}!";
+  }
 }
