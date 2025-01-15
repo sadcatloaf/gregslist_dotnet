@@ -1,5 +1,3 @@
-using System.Threading.Tasks;
-
 namespace gregslist_dotnet.Controllers;
 
 [ApiController]
