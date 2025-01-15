@@ -9,6 +9,7 @@ public class CarsService
     _repository = repository;
   }
 
+  // each service should only talk to one repository
   private readonly CarsRepository _repository;
 
 
@@ -48,18 +49,23 @@ public class CarsService
 
   internal Car UpdateCar(int carId, string userId, Car carUpdateData)
   {
+
     Car car = GetCarById(carId);
 
-    if (car.CreatorId != userId) throw new Exception("THIS IS NOT YOUR CAR, BUD");
+    if (car.CreatorId != userId) throw new Exception("THIS IS NOT YOUR CAR, PAL");
 
+    // if make is null in request body, default back to original make
     car.Make = carUpdateData.Make ?? car.Make;
 
     car.Model = carUpdateData.Model ?? car.Model;
 
+    // NOTE Price must be nullable in Car model to perform this check (numbers default to 0)
     car.Price = carUpdateData.Price ?? car.Price;
 
+    // NOTE HasCleanTitle must be nullable in Car model to perform this check (bools default to false)
     car.HasCleanTitle = carUpdateData.HasCleanTitle ?? car.HasCleanTitle;
 
+    // NOTE don't forget to update the database
     _repository.UpdateCar(car);
 
     return car;

@@ -22,8 +22,13 @@ public class CarsRepository
     FROM cars 
     JOIN accounts ON cars.creator_id = accounts.id;";
 
+    // NOTE if you have multiple data types coming in on each row (JOIN) you must provide a mapping function to dapper (2nd argument)
+    // NOTE dapper will split each piece of data on the id column for each row
+    // NOTE the first data type on the row will go into the first parameter of the mapping function, the 2nd will go into the 2nd, etc... 
+
     List<Car> cars = _db.Query(sql, (Car car, Account account) =>
     {
+      // populate
       car.Creator = account;
       return car;
     }).ToList();

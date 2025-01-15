@@ -44,13 +44,16 @@ public class CarsController : ControllerBase
     }
   }
 
+  // NOTE the following method requires authorization 
   [Authorize] // .use(Auth0Provider.getUserInfo)
   [HttpPost]
   public async Task<ActionResult<Car>> CreateCar([FromBody] Car carData)
   {
     try
     {
+      // request.userInfo
       Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+      // assign ownership NEVER TRUST THE CLIENT
       carData.CreatorId = userInfo.Id;
       Car car = _carsService.CreateCar(carData);
       return Ok(car);

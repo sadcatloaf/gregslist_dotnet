@@ -1,7 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace gregslist_dotnet.Models;
-
 public class Car
 {
   public int Id { get; set; }
