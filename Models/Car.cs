@@ -1,5 +1,6 @@
 namespace gregslist_dotnet.Models;
 
+// TODO show off stricter data validation
 public class Car
 {
   public int Id { get; set; }
