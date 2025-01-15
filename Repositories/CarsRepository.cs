@@ -10,7 +10,6 @@ public class CarsRepository
 
   private readonly IDbConnection _db;
 
-
   internal List<Car> GetAllCars()
   {
     string sql = "SELECT * FROM cars;";
