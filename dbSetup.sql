@@ -67,7 +67,15 @@ CREATE TABLE houses(
   description VARCHAR(255) NOT NULL,
   price INT NOT NULL,
 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
-updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
+updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update'
 );
 
 DROP TABLE houses;
+
+SELECT * FROM accounts;
+
+INSERT INTO 
+houses(sqft, bedrooms, bathrooms, imgUrl, description, price, createdAt, updatedAt)
+VALUES(1500, 3, 2, "https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG91c2V8ZW58MHx8MHx8fDA%3D", "Quiet cozy winter cabin house", 350000, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP) 
+
+SELECT * FROM houses;
