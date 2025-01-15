@@ -1,4 +1,5 @@
 
+
 namespace gregslist_dotnet.Repositories;
 
 public class CarsRepository
@@ -24,6 +25,16 @@ public class CarsRepository
       car.Creator = account;
       return car;
     }).ToList();
+
     return cars;
+  }
+
+  internal Car GetCarById(int carId)
+  {
+    string sql = @"SELECT * FROM cars WHERE id = @carId;";
+
+    Car car = _db.Query<Car>(sql, new { carId }).SingleOrDefault();
+
+    return car;
   }
 }

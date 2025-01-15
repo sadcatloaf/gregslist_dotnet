@@ -25,4 +25,18 @@ public class CarsController : ControllerBase
       return BadRequest(error.Message);
     }
   }
+
+  [HttpGet("{carId}")]
+  public ActionResult<Car> GetCarById(int carId)
+  {
+    try
+    {
+      Car car = _carsService.GetCarById(carId);
+      return Ok(car);
+    }
+    catch (Exception error)
+    {
+      return BadRequest(error.Message);
+    }
+  }
 }

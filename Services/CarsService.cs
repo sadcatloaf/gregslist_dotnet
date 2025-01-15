@@ -1,4 +1,5 @@
 
+
 namespace gregslist_dotnet.Services;
 
 public class CarsService
@@ -17,4 +18,14 @@ public class CarsService
     List<Car> cars = _repository.GetAllCars();
     return cars;
   }
+
+  internal Car GetCarById(int carId)
+  {
+    Car car = _repository.GetCarById(carId);
+
+    if (car == null) throw new Exception($"Invalid car id: {carId}");
+
+    return car;
+  }
+
 }
