@@ -30,6 +30,10 @@ CREATE TABLE cars(
 
 DROP TABLE cars;
 
--- INSERT INTO 
--- cars(make, model, year, price, color, img_url, description, engine_type, mileage, has_clean_title, creator_id)
--- VALUES("mazda", "miata", 1996, 6000, "red", "https://images.unsplash.com/photo-1725199583250-9f59567ba965?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bWlhdGF8ZW58MHx8MHx8fDA%3D", "car for jeremy", "4-cylinder", 10000, false, "jeremy");
+SELECT * FROM accounts;
+
+INSERT INTO 
+cars(make, model, year, price, color, img_url, description, engine_type, mileage, has_clean_title, creator_id)
+VALUES("john", "deere", 2004, 120000, "green", "https://images.unsplash.com/photo-1531798123643-26d5ab4c264d?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHRyYWN0b3J8ZW58MHx8MHx8fDA%3D", "'car' for mick", "v10", 100000, true, "65f87bc1e02f1ee243874743");
+
+SELECT * FROM cars;
