@@ -17,4 +17,5 @@ public class Car
   public int Mileage { get; set; }
   public bool HasCleanTitle { get; set; }
   public string CreatorId { get; set; }
+  public Account Creator { get; set; }
 }
