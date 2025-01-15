@@ -45,8 +45,15 @@ FROM cars
 JOIN accounts ON cars.creator_id = accounts.id;
 
 SELECT 
-    cars.*,
-    accounts.*
-    FROM cars
-    JOIN accounts ON cars.creator_id = accounts.id
-    WHERE cars.id = 2;
+cars.*,
+accounts.*
+FROM cars
+JOIN accounts ON cars.creator_id = accounts.id
+WHERE cars.id = 2;
+
+
+UPDATE cars
+SET
+make = "MAZDA",
+model = "MIATA" 
+WHERE id = 2;

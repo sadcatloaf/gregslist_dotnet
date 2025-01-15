@@ -45,4 +45,23 @@ public class CarsService
 
     return $"Deleted the {car.Make} {car.Model}!";
   }
+
+  internal Car UpdateCar(int carId, string userId, Car carUpdateData)
+  {
+    Car car = GetCarById(carId);
+
+    if (car.CreatorId != userId) throw new Exception("THIS IS NOT YOUR CAR, BUD");
+
+    car.Make = carUpdateData.Make ?? car.Make;
+
+    car.Model = carUpdateData.Model ?? car.Model;
+
+    car.Price = carUpdateData.Price ?? car.Price;
+
+    car.HasCleanTitle = carUpdateData.HasCleanTitle ?? car.HasCleanTitle;
+
+    _repository.UpdateCar(car);
+
+    return car;
+  }
 }

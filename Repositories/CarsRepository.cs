@@ -82,4 +82,21 @@ public class CarsRepository
     if (rowsAffected == 0) throw new Exception("DELETE WAS UNSUCCESSFUL");
     if (rowsAffected > 1) throw new Exception("DELETE WAS TOO SUCCESSFUL");
   }
+
+  internal void UpdateCar(Car carData)
+  {
+    string sql = @"
+    UPDATE cars
+    SET
+    make = @Make,
+    model = @Model,
+    price = @Price,
+    has_clean_title = @HasCleanTitle
+    WHERE id = @Id LIMIT 1;";
+
+    int rowsAffected = _db.Execute(sql, carData);
+
+    if (rowsAffected == 0) throw new Exception("UPDATE WAS UNSUCCESSFUL");
+    if (rowsAffected > 1) throw new Exception("UPDATE WAS TOO SUCCESSFUL");
+  }
 }
