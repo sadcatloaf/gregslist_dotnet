@@ -28,4 +28,10 @@ public class CarsService
     return car;
   }
 
+  internal Car CreateCar(Car carData)
+  {
+    Car car = _repository.CreateCar(carData);
+
+    return car;
+  }
 }
